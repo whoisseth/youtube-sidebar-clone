@@ -17,37 +17,33 @@ type SidebarItem = {
   activeIcon?: React.ReactNode;
   nestedItems?: SidebarItem[];
   sectionTitle?: string;
-  showWhenCollapsed?: boolean;
 };
 
 export const ytSidebarDataset: SidebarItem[] = [
   {
     title: "Home",
-    path: "/home",
+    path: "/",
     defaultIcon: <GoHome />,
-    activeIcon: <GoHomeFill />,
-    showWhenCollapsed: true
+    activeIcon: <GoHomeFill />
   },
   {
     title: "Trending",
     path: "/trending",
     defaultIcon: <BsGrid3X3Gap />,
-    activeIcon: <BsGrid3X3Gap />,
-    showWhenCollapsed: true
+    activeIcon: <BsGrid3X3Gap />
   },
   {
     title: "Subscriptions",
-    path: "/shorts",
-    defaultIcon: <Subscriptions />,
-    activeIcon: <SubscriptionsFill />,
-    showWhenCollapsed: true
+    path: "/subscriptions",
+    defaultIcon: <YtShortsIcon />,
+    activeIcon: <SiYoutubeshorts />
   },
   {
     title: "Shorts",
-    path: "/subscriptions",
-    defaultIcon: <YtShortsIcon />,
-    activeIcon: <SiYoutubeshorts />,
-    showWhenCollapsed: true
+    path: "/shorts",
+
+    defaultIcon: <Subscriptions />,
+    activeIcon: <SubscriptionsFill />
   },
   {
     sectionTitle: "Library",

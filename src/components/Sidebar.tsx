@@ -7,6 +7,7 @@ import Image from "next/image";
 import HoverDiv from "./HoverDiv";
 import { useState } from "react";
 import { IoIosMenu } from "react-icons/io";
+import { usePathname } from "next/navigation";
 
 import { cn } from "@/utils/cn";
 
@@ -23,15 +24,11 @@ export default function Sidebar({}: Props) {
   }
 
   return (
-    <div
-      className={cn(
-        "  h-full flex-col  flex  bg-black text-slate-50 absolute "
-      )}
-    >
+    <div className={cn("  h-full flex-col  flex  bg-black text-slate-50  ")}>
       <section className="px-5 py-4 flex items-center gap-4">
         <HoverDiv
           className={cn("rounded-full py-2 px-2", {
-            "px-3": !isSidebarOpen
+            "mx-2": !isSidebarOpen
           })}
           onClick={toggleSidebar}
         >
@@ -70,7 +67,7 @@ export default function Sidebar({}: Props) {
                 <p className="px-3 mb-2">{d.sectionTitle}</p>
                 {d.nestedItems?.map((n, i) => (
                   <SidebarItem
-                    path={d.path}
+                    path={n.path}
                     key={i}
                     activeIcon={n.activeIcon}
                     defaultIcon={n.defaultIcon}
@@ -109,9 +106,12 @@ type SidebarItemProps = {
 };
 
 function SidebarItem(props: SidebarItemProps) {
+  const pathname = usePathname();
+
   return (
     <Link href={props.path ?? "#"}>
       <HoverDiv
+        isActive={pathname === props.path}
         className={cn("w-full flex items-center gap-5 ", {
           "flex-col gap-2": !props.isSidebarOpen
         })}
